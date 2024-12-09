@@ -31,7 +31,7 @@ namespace HSZ_Beadando_DLL {
             VizNyomasLog.Add(nyomas);
         }
         public void EnergiaValtozas(double homersekletvaltozas) {
-            MegtermeltEnergia = homersekletvaltozas * VizNyomas * Fajho;
+            MegtermeltEnergia += homersekletvaltozas;
             MegtermeltEnergiaLog.Add(homersekletvaltozas);
         }
         public void Homersekletallitas(double HoValtozas) {
