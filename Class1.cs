@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 // DLL fájlt írta: Kristóf
 namespace HSZ_Beadando_DLL {
     public class Reaktor {
+        
+
         //Változók
         public double VizNyomas { get; set; } //MPa
         public double MegtermeltEnergia { get; set; } //MW
@@ -16,7 +18,7 @@ namespace HSZ_Beadando_DLL {
         public List<double> HomersekletLog = new List<double>();
         private const double MaxVízNyomas = 11; 
         private const double MaxHomerseklet = 700.0;
-        private const double Fajho = 4186;
+        private Random r = new Random();
         //Konstruktor
         public Reaktor(double VizNyomas, double MegtermeltEnergia, double Homerseklet) {
             this.VizNyomas = VizNyomas;
@@ -26,20 +28,31 @@ namespace HSZ_Beadando_DLL {
             this.MegtermeltEnergiaLog.Add(MegtermeltEnergia);
             this.HomersekletLog.Add(Homerseklet);
         }
-        public void NyomasAllitas(double nyomas) {
-            VizNyomas += nyomas;
-            VizNyomasLog.Add(nyomas);
+        //Delegált: Zoli
+        public delegate void Valtozas(bool seged);
+        public void Delegalt(bool seged) {
+            Valtozas del = new Valtozas(NyomasAllitas);
+            del += EnergiaValtozas;
+            del += Homersekletallitas;
         }
-        public void EnergiaValtozas(double homersekletvaltozas) {
-            MegtermeltEnergia += homersekletvaltozas;
-            MegtermeltEnergiaLog.Add(homersekletvaltozas);
+        public void NyomasAllitas(bool seged) {
+            double random = r.NextDouble();
+            VizNyomas += random;
+            VizNyomasLog.Add(random);
         }
-        public void Homersekletallitas(double HoValtozas) {
-            Homerseklet += HoValtozas;
-            HomersekletLog.Add(HoValtozas);
+        public void EnergiaValtozas(bool seged) {
+            double random = r.NextDouble();
+            MegtermeltEnergia += random;
+            MegtermeltEnergiaLog.Add(random);
+        }
+        public void Homersekletallitas(bool seged) {
+            double random = r.NextDouble();
+            Homerseklet += random;
+            HomersekletLog.Add(random);
         }
         public void Kiiras() {
             Console.WriteLine($"Kezdeti víznyomás: {VizNyomas} MPa, kimeneti energia: {MegtermeltEnergia} MW, hőmérséklet: {Homerseklet} °C");
         }
+        //Eseménykezelés: Zoli
     }
 }
