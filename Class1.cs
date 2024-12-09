@@ -14,7 +14,7 @@ namespace HSZ_Beadando_DLL {
         public List<double> VizNyomasLog = new List<double>();
         public List<double> MegtermeltEnergiaLog = new List<double>();
         public List<double> HomersekletLog = new List<double>();
-        private const double MaxVízNyomas = 7.5; 
+        private const double MaxVízNyomas = 11; 
         private const double MaxHomerseklet = 700.0;
         private const double Fajho = 4186;
         //Konstruktor
@@ -28,7 +28,7 @@ namespace HSZ_Beadando_DLL {
         }
         public void NyomasAllitas(double nyomas) {
             if (nyomas < 0 || nyomas > MaxVízNyomas)
-                throw new ArgumentOutOfRangeException(nameof(nyomas), "A víznyomásnak 0 és 7.5 MPa között kell lennie.");
+                throw new ArgumentOutOfRangeException(nameof(nyomas), "A víznyomásnak 0 és 11 MPa között kell lennie.");
             VizNyomas = nyomas;
             VizNyomasLog.Add(nyomas);
         }
