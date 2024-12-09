@@ -11,6 +11,9 @@ namespace HSZ_Beadando_DLL {
         public double VizNyomas { get; set; } //MPa
         public double MegtermeltEnergia { get; set; } //MW
         public double Homerseklet { get; set; } //Celsius
+        public List<double> VizNyomasLog = new List<double>();
+        public List<double> MegtermeltEnergiaLog = new List<double>();
+        public List<double> HomersekletLog = new List<double>();
         private const double MaxVízNyomas = 7.5; 
         private const double MaxHomerseklet = 700.0;
         //Konstruktor
