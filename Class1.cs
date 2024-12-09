@@ -37,18 +37,36 @@ namespace HSZ_Beadando_DLL {
         }
         public void NyomasAllitas(bool seged) {
             double random = r.NextDouble();
-            VizNyomas += random;
-            VizNyomasLog.Add(random);
+            if (seged) {
+                VizNyomas += random;
+                VizNyomasLog.Add(random);
+            }
+            else {
+                VizNyomas -= random;
+                VizNyomasLog.Add(-random);
+            }
         }
         public void EnergiaValtozas(bool seged) {
             double random = r.NextDouble();
-            MegtermeltEnergia += random;
-            MegtermeltEnergiaLog.Add(random);
+            if (seged) {
+                MegtermeltEnergia += random;
+                MegtermeltEnergiaLog.Add(random);
+            }
+            else {
+                MegtermeltEnergia -= random;
+                MegtermeltEnergiaLog.Add(-random);
+            }
         }
         public void Homersekletallitas(bool seged) {
             double random = r.NextDouble();
-            Homerseklet += random;
-            HomersekletLog.Add(random);
+            if (seged) {
+                Homerseklet += random;
+                HomersekletLog.Add(random);
+            }
+            else {
+                Homerseklet -= random;
+                HomersekletLog.Add(-random);
+            }
         }
         public void Kiiras() {
             Console.WriteLine($"Kezdeti víznyomás: {VizNyomas} MPa, kimeneti energia: {MegtermeltEnergia} MW, hőmérséklet: {Homerseklet} °C");
