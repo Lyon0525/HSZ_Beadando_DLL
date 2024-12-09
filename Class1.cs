@@ -27,9 +27,7 @@ namespace HSZ_Beadando_DLL {
             this.HomersekletLog.Add(Homerseklet);
         }
         public void NyomasAllitas(double nyomas) {
-            if (nyomas < 0 || nyomas > MaxVízNyomas)
-                throw new ArgumentOutOfRangeException(nameof(nyomas), "A víznyomásnak 0 és 11 MPa között kell lennie.");
-            VizNyomas = nyomas;
+            VizNyomas += nyomas;
             VizNyomasLog.Add(nyomas);
         }
         public void EnergiaValtozas(double homersekletvaltozas) {
@@ -38,7 +36,6 @@ namespace HSZ_Beadando_DLL {
         }
         public void Homersekletallitas(double HoValtozas) {
             Homerseklet += HoValtozas;
-            if (Homerseklet > MaxHomerseklet) throw new InvalidOperationException("A reaktor hőmérséklete meghaladta a kritikus szintet!");
             HomersekletLog.Add(HoValtozas);
         }
         public void Kiiras() {
