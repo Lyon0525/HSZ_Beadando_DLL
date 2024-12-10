@@ -7,8 +7,6 @@ using System.Threading.Tasks;
 // DLL fájlt írta: Kristóf
 namespace HSZ_Beadando_DLL {
     public class Reaktor {
-        
-
         //Változók
         public double VizNyomas { get; set; } //MPa
         public double MegtermeltEnergia { get; set; } //MW
@@ -19,6 +17,9 @@ namespace HSZ_Beadando_DLL {
         private const double MaxVízNyomas = 11; 
         private const double MaxHomerseklet = 700.0;
         private Random r = new Random();
+        //Eseménykezelés Zoli
+        public event Action<double> HomersekletTullepes;
+
         //Konstruktor
         public Reaktor(double VizNyomas, double MegtermeltEnergia, double Homerseklet) {
             this.VizNyomas = VizNyomas;
@@ -63,6 +64,11 @@ namespace HSZ_Beadando_DLL {
             }
             else {
                 Homerseklet -= random;
+            }
+            //Eseménykezelés Zoli
+            if (Homerseklet >= MaxHomerseklet)
+            {
+                HomersekletTullepes?.Invoke(Homerseklet);
             }
             HomersekletLog.Add(Homerseklet);
         }
