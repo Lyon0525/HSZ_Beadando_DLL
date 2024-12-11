@@ -73,7 +73,7 @@ namespace HSZ_Beadando_DLL {
             HomersekletLog.Add(Homerseklet);
         }
         public void Kiiras() {
-            Console.WriteLine($"Kezdeti víznyomás: {VizNyomas} MPa, kimeneti energia: {MegtermeltEnergia} MW, hőmérséklet: {Homerseklet} °C");
+            Console.WriteLine($"Víznyomás: {VizNyomas} MPa, kimeneti energia: {MegtermeltEnergia} MW, hőmérséklet: {Homerseklet} °C");
         }
         //Eseménykezelés: Zoli
     }
